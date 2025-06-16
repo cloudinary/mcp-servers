@@ -22,8 +22,10 @@ The following MCP servers are available for Cloudinary:
 - [Using Cloudinary's MCP servers with OpenAI Responses API](#using-cloudinarys-mcp-servers-with-openai-responses-api)
 - [Authentication](#authentication)
 - [Features by Server](#features-by-server)
+- [Need access to more Cloudinary tools?](#need-access-to-more-cloudinary-tools)
 - [Troubleshooting](#troubleshooting)
 - [Paid Features](#paid-features)
+- [License](#license)
 
 ## Access the MCP servers from any MCP client
 
@@ -52,8 +54,6 @@ If your MCP client has first class support for remote MCP servers, the client wi
   }
 }
 ```
-
-**Note**: Remote servers use OAuth authentication, so no additional credentials are required.
 
 ### Local Servers (Alternative)
 
@@ -147,8 +147,6 @@ OpenAI's [Responses API](https://platform.openai.com/docs/guides/responses) allo
 
 ### Remote Server Configuration (Recommended)
 
-For remote servers, use OAuth authentication with no additional credentials required:
-
 ```javascript
 const response = await openai.chat.completions.create({
   model: "gpt-4o",
@@ -238,25 +236,10 @@ const response = await openai.chat.completions.create({
 });
 ```
 
-### Authentication Summary
-
-- **Remote servers**: Use OAuth authentication (no credentials required)
-- **Local servers**: Provide your Cloudinary URL in the format `cloudinary://api_key:api_secret@cloud_name`
-
-### Available Server URLs
-
-| Server | Remote URL | Package Name |
-|--------|------------|--------------|
-| Asset Management | `https://asset-management.mcp.cloudinary.com/sse` | `@cloudinary/asset-management` |
-| Environment Config | `https://environment-config.mcp.cloudinary.com/sse` | `@cloudinary/environment-config` |
-| Structured Metadata | `https://structured-metadata.mcp.cloudinary.com/sse` | `@cloudinary/structured-metadata` |
-| Mediaflows | `https://mediaflows.mcp.cloudinary.com/sse` | N/A (remote only) |
-| Analysis | `https://analysis.mcp.cloudinary.com/sse` | `@cloudinary/analysis` |
-
 ## Authentication
 
 ### Remote Servers
-Remote Cloudinary MCP servers use OAuth authentication, so no additional credentials are required. Simply connect through your MCP client.
+Remote servers use OAuth authentication, so no additional credentials are required.
 
 ### Local Servers
 When running MCP servers locally, authentication can be configured in several ways:
@@ -337,9 +320,3 @@ Some features may require a paid Cloudinary plan. Ensure your Cloudinary account
 ## License
 
 Licensed under the MIT License. See LICENSE file for details.
-
-## Quick Start
-
-**For Cursor users**: Click any install button in the table above
-**For other MCP clients**: Use the remote server URLs (no setup required)
-**For OpenAI API**: See the [OpenAI Integration section](#using-cloudinarys-mcp-servers-with-openai-responses-api)
