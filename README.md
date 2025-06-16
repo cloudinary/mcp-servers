@@ -33,23 +33,23 @@ If your MCP client has first class support for remote MCP servers, the client wi
 
 ```json
 {
-	"mcpServers": {
-		"cloudinary-asset-mgmt": {
-			"url": "https://asset-management.mcp.cloudinary.com/sse"
-		},
-		"cloudinary-env-config": {
-			"url": "https://environment-config.mcp.cloudinary.com/sse"
-		},
-		"cloudinary-smd": {
-			"url": "https://structured-metadata.mcp.cloudinary.com/sse"
-		},
-		"cloudinary-mediaflows": {
-			"url": "https://mediaflows.mcp.cloudinary.com/sse"
-		},
-		"cloudinary-analysis": {
-			"url": "https://analysis.mcp.cloudinary.com/sse"
-		}
-	}
+  "mcpServers": {
+    "cloudinary-asset-mgmt": {
+      "url": "https://asset-management.mcp.cloudinary.com/sse"
+    },
+    "cloudinary-env-config": {
+      "url": "https://environment-config.mcp.cloudinary.com/sse"
+    },
+    "cloudinary-smd": {
+      "url": "https://structured-metadata.mcp.cloudinary.com/sse"
+    },
+    "cloudinary-mediaflows": {
+      "url": "https://mediaflows.mcp.cloudinary.com/sse"
+    },
+    "cloudinary-analysis": {
+      "url": "https://analysis.mcp.cloudinary.com/sse"
+    }
+  }
 }
 ```
 
@@ -79,17 +79,17 @@ You can also run the MCP servers locally using the individual npm packages. Ther
 
 ```json
 {
-	"mcpServers": {
-		"cloudinary-asset-mgmt": {
-			"command": "npx",
-			"args": ["-y", "--package", "@cloudinary/asset-management", "--", "mcp", "start"],
-			"env": {
-				"CLOUDINARY_CLOUD_NAME": "cloud_name",
-				"CLOUDINARY_API_KEY": "api_key",
-				"CLOUDINARY_API_SECRET": "api_secret"
-			}
-		}
-	}
+  "mcpServers": {
+    "cloudinary-asset-mgmt": {
+      "command": "npx",
+      "args": ["-y", "--package", "@cloudinary/asset-management", "--", "mcp", "start"],
+      "env": {
+        "CLOUDINARY_CLOUD_NAME": "cloud_name",
+        "CLOUDINARY_API_KEY": "api_key",
+        "CLOUDINARY_API_SECRET": "api_secret"
+      }
+    }
+  }
 }
 ```
 
@@ -97,19 +97,19 @@ You can also run the MCP servers locally using the individual npm packages. Ther
 
 ```json
 {
-	"mcpServers": {
-		"cloudinary-asset-mgmt": {
-			"command": "npx",
-			"args": [
-				"-y", "--package", "@cloudinary/asset-management",
-				"--",
-				"mcp", "start",
-				"--cloud-name", "cloud_name",
-				"--api-key", "api_key",
-				"--api-secret", "api_secret"
-			]
-		}
-	}
+  "mcpServers": {
+    "cloudinary-asset-mgmt": {
+      "command": "npx",
+      "args": [
+        "-y", "--package", "@cloudinary/asset-management",
+        "--",
+        "mcp", "start",
+        "--cloud-name", "cloud_name",
+        "--api-key", "api_key",
+        "--api-secret", "api_secret"
+      ]
+    }
+  }
 }
 ```
 
@@ -117,15 +117,15 @@ You can also run the MCP servers locally using the individual npm packages. Ther
 
 ```json
 {
-	"mcpServers": {
-		"cloudinary-asset-mgmt": {
-			"command": "npx",
-			"args": ["-y", "--package", "@cloudinary/asset-management", "--", "mcp", "start"],
-			"env": {
-				"CLOUDINARY_URL": "cloudinary://api_key:api_secret@cloud_name"
-			}
-		}
-	}
+  "mcpServers": {
+    "cloudinary-asset-mgmt": {
+      "command": "npx",
+      "args": ["-y", "--package", "@cloudinary/asset-management", "--", "mcp", "start"],
+      "env": {
+        "CLOUDINARY_URL": "cloudinary://api_key:api_secret@cloud_name"
+      }
+    }
+  }
 }
 ```
 
