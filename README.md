@@ -246,30 +246,37 @@ You can find your Cloudinary credentials in your [Cloudinary Console Dashboard](
 ## Features by Server
 
 ### Asset Management Server
-- Upload and manage images, videos, and raw files
-- Advanced search and filtering capabilities
-- Bulk operations on assets
-- Asset transformation and optimization
-- Folder and tag management
+- Upload and manage media assets (images, videos, raw files)
+- Search and organize assets with advanced filtering capabilities
+- Handle asset operations and transformations
+- Manage folders, tags, and asset relationships
+- Generate archives and download links
 
 ### Environment Config Server
-- Manage upload presets and transformation settings
-- Configure webhooks and notifications
-- Set up auto-moderation and tagging rules
-- Manage user access and permissions
+- Configure upload presets and transformation settings
+- Manage streaming profiles and webhook notifications
+- Set up upload mappings and folder structures
+- Control environment-level configurations
 
 ### Structured Metadata Server
-- Define custom metadata fields for assets
-- Create searchable metadata schemas
-- Bulk metadata operations
-- Advanced querying capabilities
+- Create and manage custom metadata fields
+- Configure metadata rules and validation
+- Organize and search metadata configurations
+- Handle metadata field relationships and ordering
 
 ### Analysis Server
-- AI-powered content analysis and tagging
-- Content moderation and safety checks
-- Object detection and recognition
-- Color analysis and dominant color extraction
-- Quality assessment and optimization suggestions
+- AI-powered content analysis including tagging, moderation, and captioning
+- Object detection and recognition with multiple AI models
+- Image quality analysis and watermark detection
+- Content moderation and safety analysis
+- Fashion, text, and anatomy detection capabilities
+
+### MediaFlows Server
+- Build and manage workflow automations using natural language
+- Query existing PowerFlow automations in your environment
+- Create conditional logic based on metadata, tags, and asset properties
+- Automate asset moderation, approval, and notification workflows
+- Debug and understand existing automation configurations
 
 ## Need access to more Cloudinary tools?
 
