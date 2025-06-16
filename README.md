@@ -136,7 +136,7 @@ Apply the same configuration pattern to all other servers by replacing `@cloudin
 
 ## Using Cloudinary's MCP servers with OpenAI Responses API
 
-OpenAI's [Responses API](https://platform.openai.com/docs/guides/responses) allows you to integrate MCP servers directly into your OpenAI API calls, enabling AI models to access Cloudinary's media management capabilities in real-time.
+OpenAI's [Responses API](https://platform.openai.com/docs/api-reference/responses) allows you to integrate MCP servers directly into your OpenAI API calls, enabling AI models to access Cloudinary's media management capabilities in real-time.
 
 ### Setup Overview
 
