@@ -30,8 +30,8 @@ The following MCP servers are available for Cloudinary:
 
 For detailed guides, tutorials, and comprehensive documentation on using Cloudinary's MCP servers:
 
-- **[Cloudinary LLM MCP Documentation](https://cloudinary.com/documentation/cloudinary_llm_mcp)** - Complete guide to integrating Cloudinary with AI/LLM applications
-- **[MediaFlows MCP Documentation](https://cloudinary.com/documentation/mediaflows_mcp)** - Advanced media workflow automation with MCP
+- **[Cloudinary MCP and LLM Tool Documentation](https://cloudinary.com/documentation/cloudinary_llm_mcp)** - Complete guide to integrating Cloudinary with AI/LLM applications
+- **[MediaFlows MCP Documentation](https://cloudinary.com/documentation/mediaflows_mcp)** - Setup instructions and guidelines for using the MediaFlows (MCP) server
 
 ## Configuration
 
@@ -47,7 +47,7 @@ For Cursor users, you can install MCP servers with one click using [Cursor deepl
 
 [![Install MCP Server](https://cursor.com/deeplink/mcp-install-dark.svg)](https://cursor.com/install-mcp?name=cloudinary-analysis&config=eyJjb21tYW5kIjoibnB4IC15IC0tcGFja2FnZSBAY2xvdWRpbmFyeS9hbmFseXNpcyAtLSBtY3Agc3RhcnQiLCJlbnYiOnsiQ0xPVURJTkFSWV9DTE9VRF9OQU1FIjoiY2xvdWRfbmFtZSIsIkNMT1VESU5BUllfQVBJX0tFWSI6ImFwaV9rZXkiLCJDTE9VRElOQVJZX0FQSV9TRUNSRVQiOiJhcGlfc2VjcmV0In19) **Analysis**
 
-[![Install MCP Server](https://cursor.com/deeplink/mcp-install-dark.svg)](https://cursor.com/install-mcp?name=mediaflows&config=eyJ1cmwiOiJodHRwczovL21lZGlhZmxvd3MubWNwLmNsb3VkaW5hcnkuY29tL3YyL21jcCIsImhlYWRlcnMiOnsiY2xkLWNsb3VkLW5hbWUiOiJjbG91ZF9uYW1lIiwiY2xkLWFwaS1rZXkiOiJhcGlfa2V5IiwiY2xkLXNlY3JldCI6ImFwaV9zZWNyZXQifX0%3D) **MediaFlows**
+[![Install MCP Server](https://cursor.com/deeplink/mcp-install-dark.svg)](https://cursor.com/install-mcp?name=mediaflows&config=eyJ1cmwiOiJodHRwczovL21lZGlhZmxvd3MubWNwLmNsb3VkaW5hcnkuY29tL3NzZSIsImhlYWRlcnMiOnsiY2xkLWNsb3VkLW5hbWUiOiJjbG91ZF9uYW1lIiwiY2xkLWFwaS1rZXkiOiJhcGlfa2V5IiwiY2xkLXNlY3JldCI6ImFwaV9zZWNyZXQifX0=) **MediaFlows**
 
 **Note**: You'll need to update the environment variables (`CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_API_KEY`, `CLOUDINARY_API_SECRET`) with your actual credentials after installation.
 
@@ -122,7 +122,7 @@ For MediaFlows, use the following configuration:
 {
   "mcpServers": {
     "mediaflows": {
-      "url": "https://mediaflows.mcp.cloudinary.com/v2/mcp",
+      "url": "https://mediaflows.mcp.cloudinary.com/sse",
       "headers": {
         "cld-cloud-name": "cloud_name",
         "cld-api-key": "api_key",
@@ -255,12 +255,11 @@ You can find your Cloudinary credentials in your [Cloudinary Console Dashboard](
 ### Environment Config Server
 - Configure upload presets and transformation settings
 - Manage streaming profiles and webhook notifications
-- Set up upload mappings and folder structures
-- Control environment-level configurations
+- Set up upload mappings
 
 ### Structured Metadata Server
-- Create and manage custom metadata fields
-- Configure metadata rules and validation
+- Create and manage structured metadata fields
+- Configure conditional metadata rules and validation
 - Organize and search metadata configurations
 - Handle metadata field relationships and ordering
 
