@@ -122,7 +122,7 @@ For MediaFlows, use the following configuration:
 {
   "mcpServers": {
     "mediaflows": {
-      "url": "https://mediaflows.mcp.cloudinary.com/sse",
+      "url": "https://mediaflows.mcp.cloudinary.com/v2/mcp",
       "headers": {
         "cld-cloud-name": "cloud_name",
         "cld-api-key": "api_key",
