@@ -47,7 +47,7 @@ For Cursor users, you can install MCP servers with one click using [Cursor deepl
 
 [![Install MCP Server](https://cursor.com/deeplink/mcp-install-dark.svg)](https://cursor.com/install-mcp?name=cloudinary-analysis&config=eyJjb21tYW5kIjoibnB4IC15IC0tcGFja2FnZSBAY2xvdWRpbmFyeS9hbmFseXNpcyAtLSBtY3Agc3RhcnQiLCJlbnYiOnsiQ0xPVURJTkFSWV9DTE9VRF9OQU1FIjoiY2xvdWRfbmFtZSIsIkNMT1VESU5BUllfQVBJX0tFWSI6ImFwaV9rZXkiLCJDTE9VRElOQVJZX0FQSV9TRUNSRVQiOiJhcGlfc2VjcmV0In19) **Analysis**
 
-[![Install MCP Server](https://cursor.com/deeplink/mcp-install-dark.svg)](https://cursor.com/install-mcp?name=mediaflows&config=eyJ1cmwiOiJodHRwczovL21lZGlhZmxvd3MubWNwLmNsb3VkaW5hcnkuY29tL3NzZSIsImhlYWRlcnMiOnsiY2xkLWNsb3VkLW5hbWUiOiJjbG91ZF9uYW1lIiwiY2xkLWFwaS1rZXkiOiJhcGlfa2V5IiwiY2xkLXNlY3JldCI6ImFwaV9zZWNyZXQifX0=) **MediaFlows**
+[![Install MCP Server](https://cursor.com/deeplink/mcp-install-dark.svg)](https://cursor.com/install-mcp?name=mediaflows&config=eyJ1cmwiOiJodHRwczovL21lZGlhZmxvd3MubWNwLmNsb3VkaW5hcnkuY29tL3YyL21jcCIsImhlYWRlcnMiOnsiY2xkLWNsb3VkLW5hbWUiOiJjbG91ZF9uYW1lIiwiY2xkLWFwaS1rZXkiOiJhcGlfa2V5IiwiY2xkLXNlY3JldCI6ImFwaV9zZWNyZXQifX0%3D) **MediaFlows**
 
 **Note**: You'll need to update the environment variables (`CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_API_KEY`, `CLOUDINARY_API_SECRET`) with your actual credentials after installation.
 
