@@ -18,7 +18,6 @@ The following MCP servers are available for Cloudinary:
 
 - [Documentation](#documentation)
 - [Configuration](#configuration)
-- [Using Cloudinary's MCP servers with OpenAI Responses API](#using-cloudinarys-mcp-servers-with-openai-responses-api)
 - [Authentication](#authentication)
 - [Features by Server](#features-by-server)
 - [Need access to more Cloudinary tools?](#need-access-to-more-cloudinary-tools)
@@ -133,94 +132,6 @@ For MediaFlows, use the following configuration:
 }
 ```
 
-## Using Cloudinary's MCP servers with OpenAI Responses API
-
-OpenAI's [Responses API](https://platform.openai.com/docs/api-reference/responses) allows you to integrate MCP servers directly into your OpenAI API calls, enabling AI models to access Cloudinary's media management capabilities in real-time.
-
-### Setup Overview
-
-1. **Install the MCP server**: Use Cursor deeplinks or manual configuration
-2. **Configure authentication**: Provide your Cloudinary credentials
-3. **Add server to your OpenAI API request**: Include MCP server configuration in your API call
-4. **Use Cloudinary tools**: The AI model can now call Cloudinary functions during the conversation
-
-### Single Server Configuration
-
-```javascript
-const response = await openai.chat.completions.create({
-  model: "gpt-4o", 
-  messages: [
-    {
-      role: "user",
-      content: "Analyze the content of my uploaded images"
-    }
-  ],
-  tools: [
-    {
-      type: "mcp_server",
-      mcp_server: {
-        name: "cloudinary-analysis",
-        command: "npx",
-        args: ["-y", "--package", "@cloudinary/analysis", "--", "mcp", "start"],
-        env: {
-          "CLOUDINARY_URL": "cloudinary://api_key:api_secret@cloud_name"
-        }
-      }
-    }
-  ]
-});
-```
-
-### Multiple Server Configuration
-
-You can use multiple Cloudinary MCP servers in a single API call:
-
-```javascript
-const response = await openai.chat.completions.create({
-  model: "gpt-4o",
-  messages: [
-    {
-      role: "user",
-      content: "Upload these images, analyze their content, and create structured metadata"
-    }
-  ],
-  tools: [
-    {
-      type: "mcp_server",
-      mcp_server: {
-        name: "cloudinary-asset-mgmt",
-        command: "npx",
-        args: ["-y", "--package", "@cloudinary/asset-management", "--", "mcp", "start"],
-        env: {
-          "CLOUDINARY_URL": "cloudinary://api_key:api_secret@cloud_name"
-        }
-      }
-    },
-    {
-      type: "mcp_server", 
-      mcp_server: {
-        name: "cloudinary-analysis",
-        command: "npx",
-        args: ["-y", "--package", "@cloudinary/analysis", "--", "mcp", "start"],
-        env: {
-          "CLOUDINARY_URL": "cloudinary://api_key:api_secret@cloud_name"
-        }
-      }
-    },
-    {
-      type: "mcp_server",
-      mcp_server: {
-        name: "cloudinary-smd",
-        command: "npx",
-        args: ["-y", "--package", "@cloudinary/structured-metadata", "--", "mcp", "start"],
-        env: {
-          "CLOUDINARY_URL": "cloudinary://api_key:api_secret@cloud_name"
-        }
-      }
-    }
-  ]
-});
-```
 
 ## Authentication
 
@@ -229,7 +140,7 @@ When running MCP servers locally, authentication can be configured in several wa
 ### Option 1: Individual environment variables (Recommended)
 ```bash
 export CLOUDINARY_CLOUD_NAME="cloud_name"
-export CLOUDINARY_API_KEY="api_key" 
+export CLOUDINARY_API_KEY="api_key"
 export CLOUDINARY_API_SECRET="api_secret"
 ```
 
