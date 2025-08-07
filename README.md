@@ -6,18 +6,21 @@ With these MCP servers, you can seamlessly manage your entire media workflow thr
 
 The following MCP servers are available for Cloudinary:
 
-| Server Name | Description | GitHub Repository | Install |
-|-------------|-------------|-------------------|---------|
-| [**Asset Management**](https://github.com/cloudinary/asset-management-js?tab=readme-ov-file#model-context-protocol-mcp-server) | Upload, manage, and transform your media assets with advanced search and organization capabilities | [@cloudinary/asset-management](https://github.com/cloudinary/asset-management-js) | [![Install MCP Server](https://cursor.com/deeplink/mcp-install-dark.svg)](https://cursor.com/install-mcp?name=cloudinary-asset-mgmt&config=eyJjb21tYW5kIjoibnB4IC15IC0tcGFja2FnZSBAY2xvdWRpbmFyeS9hc3NldC1tYW5hZ2VtZW50IC0tIG1jcCBzdGFydCIsImVudiI6eyJDTE9VRElOQVJZX0NMT1VEX05BTUUiOiJjbG91ZF9uYW1lIiwiQ0xPVURJTkFSWV9BUElfS0VZIjoiYXBpX2tleSIsIkNMT1VESU5BUllfQVBJX1NFQ1JFVCI6ImFwaV9zZWNyZXQifX0%3D) |
-| [**Environment Config**](https://github.com/cloudinary/environment-config-js?tab=readme-ov-file#model-context-protocol-mcp-server) | Configure and manage your Cloudinary environment settings, upload presets, and transformations | [@cloudinary/environment-config](https://github.com/cloudinary/environment-config-js) | [![Install MCP Server](https://cursor.com/deeplink/mcp-install-dark.svg)](https://cursor.com/install-mcp?name=cloudinary-env-config&config=eyJjb21tYW5kIjoibnB4IC15IC0tcGFja2FnZSBAY2xvdWRpbmFyeS9lbnZpcm9ubWVudC1jb25maWcgLS0gbWNwIHN0YXJ0IiwiZW52Ijp7IkNMT1VESU5BUllfQ0xPVURfTkFNRSI6ImNsb3VkX25hbWUiLCJDTE9VRElOQVJZX0FQSV9LRVkiOiJhcGlfa2V5IiwiQ0xPVURJTkFSWV9BUElfU0VDUkVUIjoiYXBpX3NlY3JldCJ9fQ%3D%3D) |
-| [**Structured Metadata**](https://github.com/cloudinary/structured-metadata-js?tab=readme-ov-file#model-context-protocol-mcp-server) | Create, manage, and query structured metadata fields for enhanced asset organization and searchability | [@cloudinary/structured-metadata](https://github.com/cloudinary/structured-metadata-js) | [![Install MCP Server](https://cursor.com/deeplink/mcp-install-dark.svg)](https://cursor.com/install-mcp?name=cloudinary-smd&config=eyJjb21tYW5kIjoibnB4IC15IC0tcGFja2FnZSBAY2xvdWRpbmFyeS9zdHJ1Y3R1cmVkLW1ldGFkYXRhIC0tIG1jcCBzdGFydCIsImVudiI6eyJDTE9VRElOQVJZX0NMT1VEX05BTUUiOiJjbG91ZF9uYW1lIiwiQ0xPVURJTkFSWV9BUElfS0VZIjoiYXBpX2tleSIsIkNMT1VESU5BUllfQVBJX1NFQ1JFVCI6ImFwaV9zZWNyZXQifX0%3D) |
-| [**Analysis**](https://github.com/cloudinary/analysis-js?tab=readme-ov-file#model-context-protocol-mcp-server) | Leverage AI-powered content analysis, moderation, and auto-tagging capabilities for your media assets | [@cloudinary/analysis](https://github.com/cloudinary/analysis-js) | [![Install MCP Server](https://cursor.com/deeplink/mcp-install-dark.svg)](https://cursor.com/install-mcp?name=cloudinary-analysis&config=eyJjb21tYW5kIjoibnB4IC15IC0tcGFja2FnZSBAY2xvdWRpbmFyeS9hbmFseXNpcyAtLSBtY3Agc3RhcnQiLCJlbnYiOnsiQ0xPVURJTkFSWV9DTE9VRF9OQU1FIjoiY2xvdWRfbmFtZSIsIkNMT1VESU5BUllfQVBJX0tFWSI6ImFwaV9rZXkiLCJDTE9VRElOQVJZX0FQSV9TRUNSRVQiOiJhcGlfc2VjcmV0In19) |
-| [**MediaFlows**](https://cloudinary.com/documentation/mediaflows_mcp) | Build and manage low-code workflow automations for images and videos with AI-powered assistance | MediaFlows MCP | [![Install MCP Server](https://cursor.com/deeplink/mcp-install-dark.svg)](https://cursor.com/install-mcp?name=mediaflows&config=eyJ1cmwiOiJodHRwczovL21lZGlhZmxvd3MubWNwLmNsb3VkaW5hcnkuY29tL3YyL21jcCIsImhlYWRlcnMiOnsiY2xkLWNsb3VkLW5hbWUiOiJjbG91ZF9uYW1lIiwiY2xkLWFwaS1rZXkiOiJhcGlfa2V5IiwiY2xkLXNlY3JldCI6ImFwaV9zZWNyZXQifX0%3D) |
+| Server Name | Description | GitHub Repository | Remote MCP Server |
+|-------------|-------------|-------------------|-------------------|
+| [**Asset Management**](https://github.com/cloudinary/asset-management-js?tab=readme-ov-file#model-context-protocol-mcp-server) | Upload, manage, and transform your media assets with advanced search and organization capabilities | [@cloudinary/asset-management](https://github.com/cloudinary/asset-management-js) | ✅ `https://asset-management.mcp.cloudinary.com/sse` |
+| [**Environment Config**](https://github.com/cloudinary/environment-config-js?tab=readme-ov-file#model-context-protocol-mcp-server) | Configure and manage your Cloudinary environment settings, upload presets, and transformations | [@cloudinary/environment-config](https://github.com/cloudinary/environment-config-js) | ✅ `https://environment-config.mcp.cloudinary.com/sse` |
+| [**Structured Metadata**](https://github.com/cloudinary/structured-metadata-js?tab=readme-ov-file#model-context-protocol-mcp-server) | Create, manage, and query structured metadata fields for enhanced asset organization and searchability | [@cloudinary/structured-metadata](https://github.com/cloudinary/structured-metadata-js) | ✅ `https://structured-metadata.mcp.cloudinary.com/sse` |
+| [**Analysis**](https://github.com/cloudinary/analysis-js?tab=readme-ov-file#model-context-protocol-mcp-server) | Leverage AI-powered content analysis, moderation, and auto-tagging capabilities for your media assets | [@cloudinary/analysis](https://github.com/cloudinary/analysis-js) | Local only |
+| [**MediaFlows**](https://cloudinary.com/documentation/mediaflows_mcp) | Build and manage low-code workflow automations for images and videos with AI-powered assistance | MediaFlows MCP | ✅ `https://mediaflows.mcp.cloudinary.com/v2/mcp` |
 
 ## Table of Contents
 
 - [Documentation](#documentation)
-- [Configuration](#configuration)
+- [Installation](#installation)
+  - [Remote MCP Servers (Recommended)](#remote-mcp-servers-recommended)
+  - [Local MCP Servers](#local-mcp-servers)
+- [Configuration Examples](#configuration-examples)
 - [Authentication](#authentication)
 - [Features by Server](#features-by-server)
 - [Need access to more Cloudinary tools?](#need-access-to-more-cloudinary-tools)
@@ -32,29 +35,85 @@ For detailed guides, tutorials, and comprehensive documentation on using Cloudin
 - **[Cloudinary MCP and LLM Tool Documentation](https://cloudinary.com/documentation/cloudinary_llm_mcp)** - Complete guide to integrating Cloudinary with AI/LLM applications
 - **[MediaFlows MCP Documentation](https://cloudinary.com/documentation/mediaflows_mcp)** - Setup instructions and guidelines for using the MediaFlows (MCP) server
 
-## Configuration
+## Installation
 
-### Quick Install with Cursor Deeplinks
+### Remote MCP Servers (Recommended)
 
-For Cursor users, you can install MCP servers with one click using [Cursor deeplinks](https://docs.cursor.com/deeplinks):
+Remote MCP servers are hosted by Cloudinary and ready to use immediately. No local installation required.
 
-[![Install MCP Server](https://cursor.com/deeplink/mcp-install-dark.svg)](https://cursor.com/install-mcp?name=cloudinary-asset-mgmt&config=eyJjb21tYW5kIjoibnB4IC15IC0tcGFja2FnZSBAY2xvdWRpbmFyeS9hc3NldC1tYW5hZ2VtZW50IC0tIG1jcCBzdGFydCIsImVudiI6eyJDTE9VRElOQVJZX0NMT1VEX05BTUUiOiJjbG91ZF9uYW1lIiwiQ0xPVURJTkFSWV9BUElfS0VZIjoiYXBpX2tleSIsIkNMT1VESU5BUllfQVBJX1NFQ1JFVCI6ImFwaV9zZWNyZXQifX0%3D) **Asset Management**
+### Local MCP Servers
 
-[![Install MCP Server](https://cursor.com/deeplink/mcp-install-dark.svg)](https://cursor.com/install-mcp?name=cloudinary-env-config&config=eyJjb21tYW5kIjoibnB4IC15IC0tcGFja2FnZSBAY2xvdWRpbmFyeS9lbnZpcm9ubWVudC1jb25maWcgLS0gbWNwIHN0YXJ0IiwiZW52Ijp7IkNMT1VESU5BUllfQ0xPVURfTkFNRSI6ImNsb3VkX25hbWUiLCJDTE9VRElOQVJZX0FQSV9LRVkiOiJhcGlfa2V5IiwiQ0xPVURJTkFSWV9BUElfU0VDUkVUIjoiYXBpX3NlY3JldCJ9fQ%3D%3D) **Environment Config**
+Local MCP servers run on your machine using npm packages. Choose this option if you need more control or customization.
 
-[![Install MCP Server](https://cursor.com/deeplink/mcp-install-dark.svg)](https://cursor.com/install-mcp?name=cloudinary-smd&config=eyJjb21tYW5kIjoibnB4IC15IC0tcGFja2FnZSBAY2xvdWRpbmFyeS9zdHJ1Y3R1cmVkLW1ldGFkYXRhIC0tIG1jcCBzdGFydCIsImVudiI6eyJDTE9VRElOQVJZX0NMT1VEX05BTUUiOiJjbG91ZF9uYW1lIiwiQ0xPVURJTkFSWV9BUElfS0VZIjoiYXBpX2tleSIsIkNMT1VESU5BUllfQVBJX1NFQ1JFVCI6ImFwaV9zZWNyZXQifX0%3D) **Structured Metadata**
+**Note**: You'll need to configure your environment variables (`CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_API_KEY`, `CLOUDINARY_API_SECRET`) with your actual credentials after installation.
 
-[![Install MCP Server](https://cursor.com/deeplink/mcp-install-dark.svg)](https://cursor.com/install-mcp?name=cloudinary-analysis&config=eyJjb21tYW5kIjoibnB4IC15IC0tcGFja2FnZSBAY2xvdWRpbmFyeS9hbmFseXNpcyAtLSBtY3Agc3RhcnQiLCJlbnYiOnsiQ0xPVURJTkFSWV9DTE9VRF9OQU1FIjoiY2xvdWRfbmFtZSIsIkNMT1VESU5BUllfQVBJX0tFWSI6ImFwaV9rZXkiLCJDTE9VRElOQVJZX0FQSV9TRUNSRVQiOiJhcGlfc2VjcmV0In19) **Analysis**
+## Configuration Examples
 
-[![Install MCP Server](https://cursor.com/deeplink/mcp-install-dark.svg)](https://cursor.com/install-mcp?name=mediaflows&config=eyJ1cmwiOiJodHRwczovL21lZGlhZmxvd3MubWNwLmNsb3VkaW5hcnkuY29tL3YyL21jcCIsImhlYWRlcnMiOnsiY2xkLWNsb3VkLW5hbWUiOiJjbG91ZF9uYW1lIiwiY2xkLWFwaS1rZXkiOiJhcGlfa2V5IiwiY2xkLXNlY3JldCI6ImFwaV9zZWNyZXQifX0%3D) **MediaFlows**
+### Remote MCP Servers Configuration
 
-**Note**: You'll need to update the environment variables (`CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_API_KEY`, `CLOUDINARY_API_SECRET`) with your actual credentials after installation.
+Remote servers are hosted by Cloudinary and accessed via URL:
 
-### Manual Configuration
+```json
+{
+  "mcpServers": {
+    "cloudinary-asset-mgmt-remote": {
+      "url": "https://asset-management.mcp.cloudinary.com/sse"
+    },
+    "cloudinary-env-config-remote": {
+      "url": "https://environment-config.mcp.cloudinary.com/sse"
+    },
+    "cloudinary-smd-remote": {
+      "url": "https://structured-metadata.mcp.cloudinary.com/sse"
+    },
+    "mediaflows": {
+      "url": "https://mediaflows.mcp.cloudinary.com/v2/mcp"
+    }
+  }
+}
+```
 
-You can also run the MCP servers using the individual npm packages. There are several ways to configure authentication:
+### Local MCP Servers Configuration
 
-#### Option 1: Using individual environment variables
+Local servers run on your machine using npm packages:
+
+#### Option 1: Using CLOUDINARY_URL environment variable (Recommended)
+
+```json
+{
+  "mcpServers": {
+    "cloudinary-asset-mgmt": {
+      "command": "npx",
+      "args": ["-y", "--package", "@cloudinary/asset-management", "--", "mcp", "start"],
+      "env": {
+        "CLOUDINARY_URL": "cloudinary://api_key:api_secret@cloud_name"
+      }
+    },
+    "cloudinary-env-config": {
+      "command": "npx",
+      "args": ["-y", "--package", "@cloudinary/environment-config", "--", "mcp", "start"],
+      "env": {
+        "CLOUDINARY_URL": "cloudinary://api_key:api_secret@cloud_name"
+      }
+    },
+    "cloudinary-smd": {
+      "command": "npx",
+      "args": ["-y", "--package", "@cloudinary/structured-metadata", "--", "mcp", "start"],
+      "env": {
+        "CLOUDINARY_URL": "cloudinary://api_key:api_secret@cloud_name"
+      }
+    },
+    "cloudinary-analysis": {
+      "command": "npx",
+      "args": ["-y", "--package", "@cloudinary/analysis", "--", "mcp", "start"],
+      "env": {
+        "CLOUDINARY_URL": "cloudinary://api_key:api_secret@cloud_name"
+      }
+    }
+  }
+}
+```
+
+#### Option 2: Using individual environment variables
 
 ```json
 {
@@ -72,7 +131,7 @@ You can also run the MCP servers using the individual npm packages. There are se
 }
 ```
 
-#### Option 2: Using command line arguments
+#### Option 3: Using command line arguments
 
 ```json
 {
@@ -91,27 +150,6 @@ You can also run the MCP servers using the individual npm packages. There are se
   }
 }
 ```
-
-#### Option 3: Using CLOUDINARY_URL environment variable
-
-```json
-{
-  "mcpServers": {
-    "cloudinary-asset-mgmt": {
-      "command": "npx",
-      "args": ["-y", "--package", "@cloudinary/asset-management", "--", "mcp", "start"],
-      "env": {
-        "CLOUDINARY_URL": "cloudinary://api_key:api_secret@cloud_name"
-      }
-    }
-  }
-}
-```
-
-Apply the same configuration pattern to all other servers by replacing `@cloudinary/asset-management` with the respective package names:
-- `@cloudinary/environment-config`
-- `@cloudinary/structured-metadata`
-- `@cloudinary/analysis`
 
 #### MediaFlows MCP Server Configuration
 
