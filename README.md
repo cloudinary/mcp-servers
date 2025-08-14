@@ -8,11 +8,11 @@ The following MCP servers are available for Cloudinary:
 
 | Server Name | Description | GitHub Repository | Remote MCP Server |
 |-------------|-------------|-------------------|-------------------|
-| [**Asset Management**](https://github.com/cloudinary/asset-management-js?tab=readme-ov-file#model-context-protocol-mcp-server) | Upload, manage, and transform your media assets with advanced search and organization capabilities | [@cloudinary/asset-management](https://github.com/cloudinary/asset-management-js) | ✅ `https://asset-management.mcp.cloudinary.com/sse` |
-| [**Environment Config**](https://github.com/cloudinary/environment-config-js?tab=readme-ov-file#model-context-protocol-mcp-server) | Configure and manage your Cloudinary environment settings, upload presets, and transformations | [@cloudinary/environment-config](https://github.com/cloudinary/environment-config-js) | ✅ `https://environment-config.mcp.cloudinary.com/sse` |
-| [**Structured Metadata**](https://github.com/cloudinary/structured-metadata-js?tab=readme-ov-file#model-context-protocol-mcp-server) | Create, manage, and query structured metadata fields for enhanced asset organization and searchability | [@cloudinary/structured-metadata](https://github.com/cloudinary/structured-metadata-js) | ✅ `https://structured-metadata.mcp.cloudinary.com/sse` |
-| [**Analysis**](https://github.com/cloudinary/analysis-js?tab=readme-ov-file#model-context-protocol-mcp-server) | Leverage AI-powered content analysis, moderation, and auto-tagging capabilities for your media assets | [@cloudinary/analysis](https://github.com/cloudinary/analysis-js) | Local only |
-| [**MediaFlows**](https://cloudinary.com/documentation/mediaflows_mcp) | Build and manage low-code workflow automations for images and videos with AI-powered assistance | MediaFlows MCP | ✅ `https://mediaflows.mcp.cloudinary.com/v2/mcp` |
+| [**Asset Management**](https://github.com/cloudinary/asset-management-js?tab=readme-ov-file#model-context-protocol-mcp-server) | Upload, manage, and transform your media assets with advanced search and organization capabilities | [@cloudinary/asset-management](https://github.com/cloudinary/asset-management-js) | [asset-management SSE](https://asset-management.mcp.cloudinary.com/sse) |
+| [**Environment Config**](https://github.com/cloudinary/environment-config-js?tab=readme-ov-file#model-context-protocol-mcp-server) | Configure and manage your Cloudinary environment settings, upload presets, and transformations | [@cloudinary/environment-config](https://github.com/cloudinary/environment-config-js) | [environment-config SSE](https://environment-config.mcp.cloudinary.com/sse) |
+| [**Structured Metadata**](https://github.com/cloudinary/structured-metadata-js?tab=readme-ov-file#model-context-protocol-mcp-server) | Create, manage, and query structured metadata fields for enhanced asset organization and searchability | [@cloudinary/structured-metadata](https://github.com/cloudinary/structured-metadata-js) | [structured-metadata SSE](https://structured-metadata.mcp.cloudinary.com/sse) |
+| [**Analysis**](https://github.com/cloudinary/analysis-js?tab=readme-ov-file#model-context-protocol-mcp-server) | Leverage AI-powered content analysis, moderation, and auto-tagging capabilities for your media assets | [@cloudinary/analysis](https://github.com/cloudinary/analysis-js) | [analysis SSE](https://analysis.mcp.cloudinary.com/sse) |
+| [**MediaFlows**](https://cloudinary.com/documentation/mediaflows_mcp) | Build and manage low-code workflow automations for images and videos with AI-powered assistance | MediaFlows MCP | [mediaflows MCP](https://mediaflows.mcp.cloudinary.com/v2/mcp) |
 
 ## Table of Contents
 
@@ -64,6 +64,9 @@ Remote servers are hosted by Cloudinary and accessed via URL:
     },
     "cloudinary-smd-remote": {
       "url": "https://structured-metadata.mcp.cloudinary.com/sse"
+    },
+    "cloudinary-analysis-remote": {
+      "url": "https://analysis.mcp.cloudinary.com/sse"
     },
     "mediaflows": {
       "url": "https://mediaflows.mcp.cloudinary.com/v2/mcp"
@@ -130,7 +133,6 @@ Local servers run on your machine using npm packages:
   }
 }
 ```
-
 #### Option 3: Using command line arguments
 
 ```json
