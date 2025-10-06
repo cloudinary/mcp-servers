@@ -20,7 +20,9 @@ The following MCP servers are available for Cloudinary:
 - [Installation](#installation)
   - [Remote MCP Servers (Recommended)](#remote-mcp-servers-recommended)
   - [Local MCP Servers](#local-mcp-servers)
+  - [Docker Images](#docker-images)
 - [Configuration Examples](#configuration-examples)
+  - [Advanced Local Server Configuration](#advanced-local-server-configuration)
 - [Authentication](#authentication)
 - [Features by Server](#features-by-server)
 - [Need access to more Cloudinary tools?](#need-access-to-more-cloudinary-tools)
@@ -46,6 +48,20 @@ Remote MCP servers are hosted by Cloudinary and ready to use immediately. No loc
 Local MCP servers run on your machine using npm packages. Choose this option if you need more control or customization.
 
 **Note**: You'll need to configure your environment variables (`CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_API_KEY`, `CLOUDINARY_API_SECRET`) with your actual credentials after installation.
+
+### Docker Images
+
+Official Docker images for Cloudinary MCP servers are available on Docker Hub, providing a containerized deployment option for running MCP servers locally or in cloud environments.
+
+**Available on Docker Hub:** [Cloudinary MCP Docker Images](https://hub.docker.com/u/cloudinary?page=1&search=MCP)
+
+Docker images offer several benefits:
+- **Isolated environments** - Run MCP servers in containers without affecting your system dependencies
+- **Easy deployment** - Quick setup with minimal configuration required
+- **Consistent runtime** - Ensures the same environment across different machines and platforms
+- **Scalability** - Easily deploy multiple instances or integrate into container orchestration systems
+
+To use Docker images, ensure you have Docker installed on your system and pass your Cloudinary credentials as environment variables when running the containers. See the individual Docker image documentation on Docker Hub for specific usage instructions.
 
 ## Configuration Examples
 
