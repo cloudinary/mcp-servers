@@ -172,6 +172,85 @@ For MediaFlows, use the following configuration:
 }
 ```
 
+### Advanced Local Server Configuration
+
+Each npm package supports additional configuration options beyond the basic setup examples above.
+
+#### Running as SSE Server
+
+To run a local MCP server using Server-Sent Events (SSE) transport instead of stdio:
+
+```bash
+npx -y --package @cloudinary/asset-management -- mcp start --transport sse
+```
+
+You can specify a custom port (default is 2718):
+
+```bash
+npx -y --package @cloudinary/asset-management -- mcp start --transport sse --port 3000
+```
+
+#### Available Configuration Options
+
+To see all available configuration options for any package:
+
+```bash
+npx -y --package @cloudinary/asset-management -- mcp start --help
+```
+
+**Complete list of available flags:**
+
+```
+USAGE
+  mcp start [--transport stdio|sse] [--port value] [--tool value]...
+            [--scope admin|builder|librarian] [--api-key value]
+            [--api-secret value] [--oauth2 value] [--cloud-name value]
+            [--server-url value] [--server-index value]
+            [--region api|api-eu|api-ap] [--api-host value]
+            [--log-level debug|warning|info|error] [--env value]...
+
+FLAGS
+  --transport       The transport to use for communicating with the server
+                    [stdio|sse, default = stdio]
+  --port            The port to use when the SSE transport is enabled
+                    [default = 2718]
+  --tool...         Specify tools to mount on the server (repeatable)
+  --scope           Mount tools/resources that match given scope
+                    [admin|builder|librarian]
+  --api-key         Sets the apiKey auth field for the API
+  --api-secret      Sets the apiSecret auth field for the API
+  --oauth2          Sets the oauth2 auth field for the API
+  --cloud-name      Allows setting the cloudName parameter for all operations
+  --server-url      Overrides the default server URL used by the SDK
+  --server-index    Selects a predefined server used by the SDK
+  --region          Sets the region variable for url substitution
+                    [api|api-eu|api-ap]
+  --api-host        Sets the host variable for url substitution
+  --log-level       The log level to use for the server
+                    [debug|warning|info|error, default = info]
+  --env...          Environment variables made available to the server
+  -h, --help        Print help information and exit
+```
+
+#### Debugging
+
+For detailed network payload debugging, use the `CLOUDINARY_DEBUG` environment variable:
+
+```bash
+CLOUDINARY_DEBUG=true npx -y --package @cloudinary/asset-management -- mcp start
+```
+
+You can combine debug mode with other options for comprehensive troubleshooting:
+
+```bash
+CLOUDINARY_DEBUG=true npx -y --package @cloudinary/asset-management -- mcp start --transport sse --log-level debug
+```
+
+**Note:** These configuration options apply to all local MCP packages:
+- `@cloudinary/asset-management`
+- `@cloudinary/environment-config`
+- `@cloudinary/structured-metadata`
+- `@cloudinary/analysis`
 
 ## Authentication
 
