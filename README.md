@@ -6,13 +6,13 @@ With these MCP servers, you can seamlessly manage your entire media workflow thr
 
 The following MCP servers are available for Cloudinary:
 
-| Server Name | Description | GitHub Repository | Remote MCP Server |
-|-------------|-------------|-------------------|-------------------|
-| [**Asset Management**](https://github.com/cloudinary/asset-management-js?tab=readme-ov-file#model-context-protocol-mcp-server) | Upload, manage, and transform your media assets with advanced search and organization capabilities | [@cloudinary/asset-management](https://github.com/cloudinary/asset-management-js) | [asset-management SSE](https://asset-management.mcp.cloudinary.com/sse) |
-| [**Environment Config**](https://github.com/cloudinary/environment-config-js?tab=readme-ov-file#model-context-protocol-mcp-server) | Configure and manage your Cloudinary environment settings, upload presets, and transformations | [@cloudinary/environment-config](https://github.com/cloudinary/environment-config-js) | [environment-config SSE](https://environment-config.mcp.cloudinary.com/sse) |
-| [**Structured Metadata**](https://github.com/cloudinary/structured-metadata-js?tab=readme-ov-file#model-context-protocol-mcp-server) | Create, manage, and query structured metadata fields for enhanced asset organization and searchability | [@cloudinary/structured-metadata](https://github.com/cloudinary/structured-metadata-js) | [structured-metadata SSE](https://structured-metadata.mcp.cloudinary.com/sse) |
-| [**Analysis**](https://github.com/cloudinary/analysis-js?tab=readme-ov-file#model-context-protocol-mcp-server) | Leverage AI-powered content analysis, moderation, and auto-tagging capabilities for your media assets | [@cloudinary/analysis](https://github.com/cloudinary/analysis-js) | [analysis SSE](https://analysis.mcp.cloudinary.com/sse) |
-| [**MediaFlows**](https://cloudinary.com/documentation/mediaflows_mcp) | Build and manage low-code workflow automations for images and videos with AI-powered assistance | MediaFlows MCP | [mediaflows MCP](https://mediaflows.mcp.cloudinary.com/v2/mcp) |
+| Server Name | Description | Remote MCP Server |
+|-------------|-------------|-------------------|
+| [**Asset Management**](https://github.com/cloudinary/asset-management-mcp) | Upload, manage, and transform your media assets with advanced search and organization capabilities | [asset-management](https://asset-management.mcp.cloudinary.com/sse) |
+| [**Environment Config**](https://github.com/cloudinary/environment-config-mcp) | Configure and manage your Cloudinary environment settings, upload presets, and transformations | [environment-config](https://environment-config.mcp.cloudinary.com/sse) |
+| [**Structured Metadata**](https://github.com/cloudinary/structured-metadata-mcp) | Create, manage, and query structured metadata fields for enhanced asset organization and searchability | [structured-metadata](https://structured-metadata.mcp.cloudinary.com/sse) |
+| [**Analysis**](https://github.com/cloudinary/analysis-js) | Leverage AI-powered content analysis, moderation, and auto-tagging capabilities for your media assets | [analysis](https://analysis.mcp.cloudinary.com/sse) |
+| [**MediaFlows**](https://cloudinary.com/documentation/mediaflows_mcp) | Build and manage low-code workflow automations for images and videos with AI-powered assistance | [mediaflows](https://mediaflows.mcp.cloudinary.com/v2/mcp) |
 
 ## Table of Contents
 
@@ -91,6 +91,56 @@ Remote servers are hosted by Cloudinary and accessed via URL:
 }
 ```
 
+### Remote MCP Servers with Authentication
+
+Remote MCP servers hosted by Cloudinary use OAuth2 by default for authentication. You can also authenticate using API keys via headers:
+
+#### Using CLOUDINARY_URL (Simplest)
+```json
+{
+  "mcpServers": {
+    "cloudinary-asset-mgmt-remote": {
+      "url": "https://asset-management.mcp.cloudinary.com/sse",
+      "headers": {
+        "cloudinary-url": "cloudinary://api_key:api_secret@cloud_name"
+      }
+    }
+  }
+}
+```
+
+#### Using Individual Headers
+```json
+{
+  "mcpServers": {
+    "cloudinary-env-config-remote": {
+      "url": "https://environment-config.mcp.cloudinary.com/sse",
+      "headers": {
+        "cloudinary-cloud-name": "your_cloud_name",
+        "cloudinary-api-key": "your_api_key",
+        "cloudinary-api-secret": "your_api_secret"
+      }
+    }
+  }
+}
+```
+
+#### With Custom Configuration
+```json
+{
+  "mcpServers": {
+    "cloudinary-smd-remote": {
+      "url": "https://structured-metadata.mcp.cloudinary.com/sse",
+      "headers": {
+        "cloudinary-url": "cloudinary://api_key:api_secret@cloud_name",
+        "cloudinary-region": "api-eu",
+        "cloudinary-tools": "list-metadata-fields,get-metadata-field,create-metadata-field"
+      }
+    }
+  }
+}
+```
+
 ### Local MCP Servers Configuration
 
 Local servers run on your machine using npm packages:
@@ -102,21 +152,21 @@ Local servers run on your machine using npm packages:
   "mcpServers": {
     "cloudinary-asset-mgmt": {
       "command": "npx",
-      "args": ["-y", "--package", "@cloudinary/asset-management", "--", "mcp", "start"],
+      "args": ["-y", "--package", "@cloudinary/asset-management-mcp", "--", "mcp", "start"],
       "env": {
         "CLOUDINARY_URL": "cloudinary://api_key:api_secret@cloud_name"
       }
     },
     "cloudinary-env-config": {
       "command": "npx",
-      "args": ["-y", "--package", "@cloudinary/environment-config", "--", "mcp", "start"],
+      "args": ["-y", "--package", "@cloudinary/environment-config-mcp", "--", "mcp", "start"],
       "env": {
         "CLOUDINARY_URL": "cloudinary://api_key:api_secret@cloud_name"
       }
     },
     "cloudinary-smd": {
       "command": "npx",
-      "args": ["-y", "--package", "@cloudinary/structured-metadata", "--", "mcp", "start"],
+      "args": ["-y", "--package", "@cloudinary/structured-metadata-mcp", "--", "mcp", "start"],
       "env": {
         "CLOUDINARY_URL": "cloudinary://api_key:api_secret@cloud_name"
       }
@@ -139,7 +189,7 @@ Local servers run on your machine using npm packages:
   "mcpServers": {
     "cloudinary-asset-mgmt": {
       "command": "npx",
-      "args": ["-y", "--package", "@cloudinary/asset-management", "--", "mcp", "start"],
+      "args": ["-y", "--package", "@cloudinary/asset-management-mcp", "--", "mcp", "start"],
       "env": {
         "CLOUDINARY_CLOUD_NAME": "cloud_name",
         "CLOUDINARY_API_KEY": "api_key",
@@ -157,7 +207,7 @@ Local servers run on your machine using npm packages:
     "cloudinary-asset-mgmt": {
       "command": "npx",
       "args": [
-        "-y", "--package", "@cloudinary/asset-management",
+        "-y", "--package", "@cloudinary/asset-management-mcp",
         "--",
         "mcp", "start",
         "--cloud-name", "cloud_name",
@@ -197,13 +247,13 @@ Each npm package supports additional configuration options beyond the basic setu
 To run a local MCP server using Server-Sent Events (SSE) transport instead of stdio:
 
 ```bash
-npx -y --package @cloudinary/asset-management -- mcp start --transport sse
+npx -y --package @cloudinary/asset-management-mcp -- mcp start --transport sse
 ```
 
 You can specify a custom port (default is 2718):
 
 ```bash
-npx -y --package @cloudinary/asset-management -- mcp start --transport sse --port 3000
+npx -y --package @cloudinary/asset-management-mcp -- mcp start --transport sse --port 3000
 ```
 
 #### Available Configuration Options
@@ -211,7 +261,7 @@ npx -y --package @cloudinary/asset-management -- mcp start --transport sse --por
 To see all available configuration options for any package:
 
 ```bash
-npx -y --package @cloudinary/asset-management -- mcp start --help
+npx -y --package @cloudinary/asset-management-mcp -- mcp start --help
 ```
 
 **Complete list of available flags:**
@@ -253,19 +303,19 @@ FLAGS
 For detailed network payload debugging, use the `CLOUDINARY_DEBUG` environment variable:
 
 ```bash
-CLOUDINARY_DEBUG=true npx -y --package @cloudinary/asset-management -- mcp start
+CLOUDINARY_DEBUG=true npx -y --package @cloudinary/asset-management-mcp -- mcp start
 ```
 
 You can combine debug mode with other options for comprehensive troubleshooting:
 
 ```bash
-CLOUDINARY_DEBUG=true npx -y --package @cloudinary/asset-management -- mcp start --transport sse --log-level debug
+CLOUDINARY_DEBUG=true npx -y --package @cloudinary/asset-management-mcp -- mcp start --transport sse --log-level debug
 ```
 
 **Note:** These configuration options apply to all local MCP packages:
-- `@cloudinary/asset-management`
-- `@cloudinary/environment-config`
-- `@cloudinary/structured-metadata`
+- `@cloudinary/asset-management-mcp`
+- `@cloudinary/environment-config-mcp`
+- `@cloudinary/structured-metadata-mcp`
 - `@cloudinary/analysis`
 
 ## Authentication
@@ -349,7 +399,6 @@ Some features may require a paid Cloudinary plan. Ensure your Cloudinary account
 
 - Advanced AI analysis features
 - High-volume API usage
-- Custom metadata fields
 - Advanced transformation capabilities
 
 ## License
