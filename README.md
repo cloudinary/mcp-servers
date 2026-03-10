@@ -8,9 +8,9 @@ The following MCP servers are available for Cloudinary:
 
 | Server Name | Description | Remote MCP Server |
 |-------------|-------------|-------------------|
-| [**Asset Management**](https://github.com/cloudinary/asset-management-mcp) | Upload, manage, and transform your media assets with advanced search and organization capabilities | [asset-management](https://asset-management.mcp.cloudinary.com/sse) |
-| [**Environment Config**](https://github.com/cloudinary/environment-config-mcp) | Configure and manage your Cloudinary environment settings, upload presets, and transformations | [environment-config](https://environment-config.mcp.cloudinary.com/sse) |
-| [**Structured Metadata**](https://github.com/cloudinary/structured-metadata-mcp) | Create, manage, and query structured metadata fields for enhanced asset organization and searchability | [structured-metadata](https://structured-metadata.mcp.cloudinary.com/sse) |
+| [**Asset Management**](https://github.com/cloudinary/asset-management-mcp) | Upload, manage, and transform your media assets with advanced search and organization capabilities | [asset-management](https://asset-management.mcp.cloudinary.com/mcp) |
+| [**Environment Config**](https://github.com/cloudinary/environment-config-mcp) | Configure and manage your Cloudinary environment settings, upload presets, and transformations | [environment-config](https://environment-config.mcp.cloudinary.com/mcp) |
+| [**Structured Metadata**](https://github.com/cloudinary/structured-metadata-mcp) | Create, manage, and query structured metadata fields for enhanced asset organization and searchability | [structured-metadata](https://structured-metadata.mcp.cloudinary.com/mcp) |
 | [**Analysis**](https://github.com/cloudinary/analysis-js) | Leverage AI-powered content analysis, moderation, and auto-tagging capabilities for your media assets | [analysis](https://analysis.mcp.cloudinary.com/sse) |
 | [**MediaFlows**](https://cloudinary.com/documentation/mediaflows_mcp) | Build and manage low-code workflow automations for images and videos with AI-powered assistance | [mediaflows](https://mediaflows.mcp.cloudinary.com/v2/mcp) |
 
@@ -73,13 +73,13 @@ Remote servers are hosted by Cloudinary and accessed via URL:
 {
   "mcpServers": {
     "cloudinary-asset-mgmt-remote": {
-      "url": "https://asset-management.mcp.cloudinary.com/sse"
+      "url": "https://asset-management.mcp.cloudinary.com/mcp"
     },
     "cloudinary-env-config-remote": {
-      "url": "https://environment-config.mcp.cloudinary.com/sse"
+      "url": "https://environment-config.mcp.cloudinary.com/mcp"
     },
     "cloudinary-smd-remote": {
-      "url": "https://structured-metadata.mcp.cloudinary.com/sse"
+      "url": "https://structured-metadata.mcp.cloudinary.com/mcp"
     },
     "cloudinary-analysis-remote": {
       "url": "https://analysis.mcp.cloudinary.com/sse"
@@ -91,6 +91,8 @@ Remote servers are hosted by Cloudinary and accessed via URL:
 }
 ```
 
+> **Transport:** Remote servers support two endpoints — `/mcp` (Streamable HTTP, recommended, stateless) and `/sse` (SSE, deprecated, kept for backwards compatibility). The `/sse` endpoint also accepts POST requests as an alias for `/mcp`, so clients that send Streamable HTTP to `/sse` will work. Use `/mcp` for new configurations.
+
 ### Remote MCP Servers with Authentication
 
 Remote MCP servers hosted by Cloudinary use OAuth2 by default for authentication. You can also authenticate using API keys via headers:
@@ -100,7 +102,7 @@ Remote MCP servers hosted by Cloudinary use OAuth2 by default for authentication
 {
   "mcpServers": {
     "cloudinary-asset-mgmt-remote": {
-      "url": "https://asset-management.mcp.cloudinary.com/sse",
+      "url": "https://asset-management.mcp.cloudinary.com/mcp",
       "headers": {
         "cloudinary-url": "cloudinary://api_key:api_secret@cloud_name"
       }
@@ -114,7 +116,7 @@ Remote MCP servers hosted by Cloudinary use OAuth2 by default for authentication
 {
   "mcpServers": {
     "cloudinary-env-config-remote": {
-      "url": "https://environment-config.mcp.cloudinary.com/sse",
+      "url": "https://environment-config.mcp.cloudinary.com/mcp",
       "headers": {
         "cloudinary-cloud-name": "your_cloud_name",
         "cloudinary-api-key": "your_api_key",
@@ -130,13 +132,44 @@ Remote MCP servers hosted by Cloudinary use OAuth2 by default for authentication
 {
   "mcpServers": {
     "cloudinary-smd-remote": {
-      "url": "https://structured-metadata.mcp.cloudinary.com/sse",
+      "url": "https://structured-metadata.mcp.cloudinary.com/mcp",
       "headers": {
         "cloudinary-url": "cloudinary://api_key:api_secret@cloud_name",
         "cloudinary-region": "api-eu",
         "cloudinary-tools": "list-metadata-fields,get-metadata-field,create-metadata-field"
       }
     }
+  }
+}
+```
+
+#### With Debug Headers
+
+To surface API rate-limit headers and request IDs in tool results, enable header embedding:
+
+```json
+{
+  "mcpServers": {
+    "cloudinary-asset-mgmt-remote": {
+      "url": "https://asset-management.mcp.cloudinary.com/mcp",
+      "headers": {
+        "cloudinary-url": "cloudinary://api_key:api_secret@cloud_name",
+        "cloudinary-embed-headers": "true"
+      }
+    }
+  }
+}
+```
+
+Each tool result will include an `_headers` field with rate-limit and request tracing info:
+
+```json
+{
+  "_headers": {
+    "x-featureratelimit-limit": "10000",
+    "x-featureratelimit-remaining": "9998",
+    "x-featureratelimit-reset": "Thu, 13 Feb 2026 00:00:00 GMT",
+    "x-request-id": "bfeaccc60050594832508590a358a1a4"
   }
 }
 ```
