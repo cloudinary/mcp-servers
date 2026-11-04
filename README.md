@@ -1,17 +1,17 @@
 # Cloudinary MCP Servers
 
-Model Context Protocol (MCP) is a new, standardized protocol for managing context between large language models (LLMs) and external systems. This repository provides comprehensive MCP servers for Cloudinary's media management platform, enabling you to use natural language to upload, transform, analyze, and organize your media assets directly from AI applications like Cursor and Claude.
+Model Context Protocol (MCP) is a new, standardized protocol for managing context between large language models (LLMs) and external systems. This repository provides comprehensive MCP servers for Cloudinary's media management platform, enabling you to use natural language to upload, generate, transform, analyze, and organize your media assets directly from AI applications like Cursor and Claude.
 
-With these MCP servers, you can seamlessly manage your entire media workflow through conversational AI - from uploading and transforming images and videos, to configuring automated processing pipelines, analyzing content with AI-powered tools, and organizing assets with structured metadata. Whether you're building media-rich applications, managing large asset libraries, or automating content workflows, these servers provide direct access to Cloudinary's full suite of media optimization and management capabilities.
+With these MCP servers, you can seamlessly manage your entire media workflow through conversational AI - from uploading, generating, and transforming images and videos, to configuring automated processing pipelines, analyzing content with AI-powered tools, and organizing assets with structured metadata. Whether you're building media-rich applications, managing large asset libraries, or automating content workflows, these servers provide direct access to Cloudinary's full suite of media optimization and management capabilities.
 
 The following MCP servers are available for Cloudinary:
 
 | Server Name | Description | Remote MCP Server |
 |-------------|-------------|-------------------|
-| [**Asset Management**](https://github.com/cloudinary/asset-management-mcp) | Upload, manage, and transform your media assets with advanced search and organization capabilities | [asset-management](https://asset-management.mcp.cloudinary.com/mcp) |
+| [**Asset Management**](https://github.com/cloudinary/asset-management-mcp) | Upload, manage, search, and transform your media assets, and generate new images with AI from text prompts or reference images | [asset-management](https://asset-management.mcp.cloudinary.com/mcp) |
 | [**Environment Config**](https://github.com/cloudinary/environment-config-mcp) | Configure and manage your Cloudinary environment settings, upload presets, and transformations | [environment-config](https://environment-config.mcp.cloudinary.com/mcp) |
 | [**Structured Metadata**](https://github.com/cloudinary/structured-metadata-mcp) | Create, manage, and query structured metadata fields for enhanced asset organization and searchability | [structured-metadata](https://structured-metadata.mcp.cloudinary.com/mcp) |
-| [**Analysis**](https://github.com/cloudinary/analysis-js) | Leverage AI-powered content analysis, moderation, and auto-tagging capabilities for your media assets | [analysis](https://analysis.mcp.cloudinary.com/sse) |
+| [**Analysis**](https://github.com/cloudinary/analysis-mcp) | Leverage AI-powered content analysis, moderation, and auto-tagging capabilities for your media assets | [analysis](https://analysis.mcp.cloudinary.com/mcp) |
 | [**MediaFlows**](https://cloudinary.com/documentation/mediaflows_mcp) | Build and manage low-code workflow automations for images and videos with AI-powered assistance | [mediaflows](https://mediaflows.mcp.cloudinary.com/v2/mcp) |
 
 ## Table of Contents
@@ -82,7 +82,7 @@ Remote servers are hosted by Cloudinary and accessed via URL:
       "url": "https://structured-metadata.mcp.cloudinary.com/mcp"
     },
     "cloudinary-analysis-remote": {
-      "url": "https://analysis.mcp.cloudinary.com/sse"
+      "url": "https://analysis.mcp.cloudinary.com/mcp"
     },
     "mediaflows": {
       "url": "https://mediaflows.mcp.cloudinary.com/v2/mcp"
@@ -206,7 +206,7 @@ Local servers run on your machine using npm packages:
     },
     "cloudinary-analysis": {
       "command": "npx",
-      "args": ["-y", "--package", "@cloudinary/analysis", "--", "mcp", "start"],
+      "args": ["-y", "--package", "@cloudinary/analysis-mcp", "--", "mcp", "start"],
       "env": {
         "CLOUDINARY_URL": "cloudinary://api_key:api_secret@cloud_name"
       }
@@ -275,18 +275,24 @@ For MediaFlows, use the following configuration:
 
 Each npm package supports additional configuration options beyond the basic setup examples above.
 
-#### Running as SSE Server
+#### Running as an HTTP Server
 
-To run a local MCP server using Server-Sent Events (SSE) transport instead of stdio:
+To run a local MCP server using Streamable HTTP transport instead of stdio, use the `serve` command:
+
+```bash
+npx -y --package @cloudinary/asset-management-mcp -- mcp serve
+```
+
+The server listens on `http://localhost:2718/mcp`. You can specify a custom port:
+
+```bash
+npx -y --package @cloudinary/asset-management-mcp -- mcp serve --port 3000
+```
+
+The legacy SSE transport is still available via `mcp start --transport sse` (same `--port` flag, default 2718), but it is deprecated. Use `mcp serve` for new configurations:
 
 ```bash
 npx -y --package @cloudinary/asset-management-mcp -- mcp start --transport sse
-```
-
-You can specify a custom port (default is 2718):
-
-```bash
-npx -y --package @cloudinary/asset-management-mcp -- mcp start --transport sse --port 3000
 ```
 
 #### Available Configuration Options
@@ -295,40 +301,60 @@ To see all available configuration options for any package:
 
 ```bash
 npx -y --package @cloudinary/asset-management-mcp -- mcp start --help
+npx -y --package @cloudinary/asset-management-mcp -- mcp serve --help
 ```
 
-**Complete list of available flags:**
+**Complete list of available flags** (`@cloudinary/asset-management-mcp`; other packages support a subset):
 
 ```
 USAGE
-  mcp start [--transport stdio|sse] [--port value] [--tool value]...
-            [--scope admin|builder|librarian] [--api-key value]
-            [--api-secret value] [--oauth2 value] [--cloud-name value]
-            [--server-url value] [--server-index value]
-            [--region api|api-eu|api-ap] [--api-host value]
+  mcp start [--transport stdio|sse] [--port value] [--tool value]... [--mode dynamic]
+            [--tool-annotations value] [--scope admin|builder|librarian]
+            [--api-key value] [--api-secret value] [--oauth2 value]
+            [--cloud-name value] [--server-url value] [--server-index value]
+            [--region api|api-eu|api-ap] [--api-host value] [--mcp-apps value]
+            [--log-level debug|warning|info|error] [--env value]...
+  mcp serve [--port value] [--disable-static-auth] [--tool value]... [--mode dynamic]
+            [--tool-annotations value] [--scope admin|builder|librarian]
+            [--api-key value] [--api-secret value] [--oauth2 value]
+            [--cloud-name value] [--server-url value] [--server-index value]
+            [--region api|api-eu|api-ap] [--api-host value] [--mcp-apps value]
             [--log-level debug|warning|info|error] [--env value]...
 
+COMMANDS
+  start  Run the MCP server (stdio by default)
+  serve  Run the MCP server with Streamable HTTP transport
+
 FLAGS
-  --transport       The transport to use for communicating with the server
-                    [stdio|sse, default = stdio]
-  --port            The port to use when the SSE transport is enabled
-                    [default = 2718]
-  --tool...         Specify tools to mount on the server (repeatable)
-  --scope           Mount tools/resources that match given scope
-                    [admin|builder|librarian]
-  --api-key         Sets the apiKey auth field for the API
-  --api-secret      Sets the apiSecret auth field for the API
-  --oauth2          Sets the oauth2 auth field for the API
-  --cloud-name      Allows setting the cloudName parameter for all operations
-  --server-url      Overrides the default server URL used by the SDK
-  --server-index    Selects a predefined server used by the SDK
-  --region          Sets the region variable for url substitution
-                    [api|api-eu|api-ap]
-  --api-host        Sets the host variable for url substitution
-  --log-level       The log level to use for the server
-                    [debug|warning|info|error, default = info]
-  --env...          Environment variables made available to the server
-  -h, --help        Print help information and exit
+  --transport              start only: the transport to use
+                           [stdio|sse, default = stdio; sse is deprecated]
+  --port                   The port to listen on [default = 2718]
+  --disable-static-auth    serve only: disable static authentication, allowing
+                           credentials to be passed via request headers only
+  --tool...                Specify tools to mount on the server (repeatable)
+  --mode                   dynamic: expose list_tools, describe_tool_input, and
+                           execute_tool instead of individual tools [dynamic]
+  --tool-annotations       Filter tools by annotations (comma-separated:
+                           readOnly, destructive, idempotent, openWorld)
+  --scope                  Mount tools/resources that match given scope
+                           (repeatable) [admin|builder|librarian]
+  --api-key                Sets the api_key auth field for the API
+  --api-secret             Sets the api_secret auth field for the API
+  --oauth2                 Sets the oauth2 auth field for the API
+  --cloud-name             Allows setting the cloud_name parameter for all
+                           supported operations
+  --server-url             Overrides the default server URL used by the SDK
+  --server-index           Selects a predefined server used by the SDK
+  --region                 Sets the region variable for url substitution
+                           [api|api-eu|api-ap]
+  --api-host               Sets the host variable for url substitution
+  --mcp-apps               Enable MCP Apps (interactive UI): bare flag or
+                           all/true, none/false, or a comma-separated list of
+                           asset-gallery,asset-details,asset-upload
+  --log-level              The log level to use for the server
+                           [debug|warning|info|error, default = info]
+  --env...                 Environment variables made available to the server
+  -h, --help               Print help information and exit
 ```
 
 #### Debugging
@@ -342,14 +368,14 @@ CLOUDINARY_DEBUG=true npx -y --package @cloudinary/asset-management-mcp -- mcp s
 You can combine debug mode with other options for comprehensive troubleshooting:
 
 ```bash
-CLOUDINARY_DEBUG=true npx -y --package @cloudinary/asset-management-mcp -- mcp start --transport sse --log-level debug
+CLOUDINARY_DEBUG=true npx -y --package @cloudinary/asset-management-mcp -- mcp serve --log-level debug
 ```
 
 **Note:** These configuration options apply to all local MCP packages:
 - `@cloudinary/asset-management-mcp`
 - `@cloudinary/environment-config-mcp`
 - `@cloudinary/structured-metadata-mcp`
-- `@cloudinary/analysis`
+- `@cloudinary/analysis-mcp`
 
 ## Authentication
 
@@ -376,21 +402,22 @@ You can find your Cloudinary credentials in your [Cloudinary Console Dashboard](
 
 ### Asset Management Server
 - Upload and manage media assets (images, videos, raw files)
-- Search and organize assets with advanced filtering capabilities
+- Search and organize assets with advanced filtering and visual search
+- Generate new images with AI from text prompts or reference images, saved directly to your account
 - Handle asset operations and transformations
 - Manage folders, tags, and asset relationships
 - Generate archives and download links
 
 ### Environment Config Server
-- Configure upload presets and transformation settings
-- Manage streaming profiles and webhook notifications
+- Create and manage named transformations and upload presets
+- Manage streaming profiles and triggers (webhook notifications)
 - Set up upload mappings
 
 ### Structured Metadata Server
 - Create and manage structured metadata fields
 - Configure conditional metadata rules and validation
+- Manage datasource values for list-type metadata fields
 - Organize and search metadata configurations
-- Handle metadata field relationships and ordering
 
 ### Analysis Server
 - AI-powered content analysis including tagging, moderation, and captioning
@@ -398,6 +425,7 @@ You can find your Cloudinary credentials in your [Cloudinary Console Dashboard](
 - Image quality analysis and watermark detection
 - Content moderation and safety analysis
 - Fashion, text, and anatomy detection capabilities
+- Logo detection and product (shop) classification
 
 ### MediaFlows Server
 - Build and manage workflow automations using natural language
