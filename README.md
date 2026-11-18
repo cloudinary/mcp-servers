@@ -12,6 +12,7 @@ The following MCP servers are available for Cloudinary:
 | [**Environment Config**](https://github.com/cloudinary/environment-config-mcp) | Configure and manage your Cloudinary environment settings, upload presets, and transformations | [environment-config](https://environment-config.mcp.cloudinary.com/mcp) |
 | [**Structured Metadata**](https://github.com/cloudinary/structured-metadata-mcp) | Create, manage, and query structured metadata fields for enhanced asset organization and searchability | [structured-metadata](https://structured-metadata.mcp.cloudinary.com/mcp) |
 | [**Analysis**](https://github.com/cloudinary/analysis-mcp) | Leverage AI-powered content analysis, moderation, and auto-tagging capabilities for your media assets | [analysis](https://analysis.mcp.cloudinary.com/mcp) |
+| [**Video**](https://github.com/cloudinary/video-mcp) | Stream live video, generate video from images, get visual transcripts, and build video pipelines | [video](https://video.mcp.cloudinary.com/mcp) |
 | [**MediaFlows**](https://cloudinary.com/documentation/mediaflows_mcp) | Build and manage low-code workflow automations for images and videos with AI-powered assistance | [mediaflows](https://mediaflows.mcp.cloudinary.com/v2/mcp) |
 
 ## Table of Contents
@@ -83,6 +84,9 @@ Remote servers are hosted by Cloudinary and accessed via URL:
     },
     "cloudinary-analysis-remote": {
       "url": "https://analysis.mcp.cloudinary.com/mcp"
+    },
+    "cloudinary-video-remote": {
+      "url": "https://video.mcp.cloudinary.com/mcp"
     },
     "mediaflows": {
       "url": "https://mediaflows.mcp.cloudinary.com/v2/mcp"
@@ -207,6 +211,13 @@ Local servers run on your machine using npm packages:
     "cloudinary-analysis": {
       "command": "npx",
       "args": ["-y", "--package", "@cloudinary/analysis-mcp", "--", "mcp", "start"],
+      "env": {
+        "CLOUDINARY_URL": "cloudinary://api_key:api_secret@cloud_name"
+      }
+    },
+    "cloudinary-video": {
+      "command": "npx",
+      "args": ["-y", "--package", "@cloudinary/video-mcp", "--", "mcp", "start"],
       "env": {
         "CLOUDINARY_URL": "cloudinary://api_key:api_secret@cloud_name"
       }
@@ -376,6 +387,7 @@ CLOUDINARY_DEBUG=true npx -y --package @cloudinary/asset-management-mcp -- mcp s
 - `@cloudinary/environment-config-mcp`
 - `@cloudinary/structured-metadata-mcp`
 - `@cloudinary/analysis-mcp`
+- `@cloudinary/video-mcp`
 
 ## Authentication
 
@@ -426,6 +438,13 @@ You can find your Cloudinary credentials in your [Cloudinary Console Dashboard](
 - Content moderation and safety analysis
 - Fashion, text, and anatomy detection capabilities
 - Logo detection and product (shop) classification
+
+### Video Server
+- Create and manage RTMP live streams, and activate or idle them manually
+- Manage live stream outputs, including simulcast to YouTube or Facebook
+- Generate videos from images with the Image to Video add-on (Beta), and save reusable prompts
+- Get timestamped visual transcripts of videos with AI Video Analysis (Beta)
+- Build and manage Video Canvas applets, saved as named transformations
 
 ### MediaFlows Server
 - Build and manage workflow automations using natural language
